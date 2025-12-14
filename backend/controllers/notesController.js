@@ -11,6 +11,8 @@ export async function  getAllNotes  (req,res){
    }
 }
 
+
+
 export async function createAllNotes(req,res){
     // if user want to create a note , they need to pass the title as well as the content, as per schema and model defined 
 try{
@@ -29,21 +31,33 @@ try{
 
 }
 
+
+
 export async function updateAllNotes(req,res){
     // res.json({message:"All the notes have been updated successfully"});
     try{
         const{title,content} = req.body
-         await Note.findByIdAndUpdate(req.params.id,{title,content}) 
-        res.status(200).json({message:"Notes have been updated successfully"}); // with this any user can pass his own id and can get the updates , followed by the fields we want to update .
+       const updated =  await Note.findByIdAndUpdate(req.params.id,{title,content}) 
+        res.status(200).json({message:"Notes have been updated successfully"}) // with this any user can pass his own id and can get the updates , followed by the fields we want to update .
 
     } catch(error){
         console.error("Can't access PUT request",error);
         res.status(500).json({message:"Internal Server Error"});
-    }
+    }  //693ec19c325dadd91672a3ee in id for mongo we have to find the user id and then pass not numbers like 1-infinite ...
 }
 
+
+
 export async function deleteAllNotes(req,res){
-    res.status(200).json({message:"All the notes have been deleted successfully"})
+    // res.status(200).json({message:"All the notes have been deleted successfully"})
+try{ const {title,content}= req.body;
+const deleted = await Note.findByIdAndDelete(req.params.id,{title,content});
+res.status(200).json({message:"Note deleted successfully"});
+
+} catch(error){
+    console.error("Internal Server Error",error.message());
+    res.status(500).json({message:"Delete request not working properly"});
+}
 }
 
 

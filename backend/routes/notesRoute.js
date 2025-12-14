@@ -33,7 +33,7 @@ const router = express.Router();
 router.get("/",getAllNotes);
 router.post("/",createAllNotes);
 router.put("/:id",updateAllNotes);
-router.delete("/:id/data", deleteAllNotes)
+router.delete("/:id", deleteAllNotes)
 export default router;   // this function exporting syntax in js 
 
 
