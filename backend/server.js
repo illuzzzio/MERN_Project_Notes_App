@@ -8,6 +8,9 @@ const app = express();
 
 connectDB();
 
+//middleware //
+app.use(express.json());
+
 app.use("/api/notes",notesRoute); // how setting till /api/notes , and calling further routes from a differen file , this makes code super readable 
 
 

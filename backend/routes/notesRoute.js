@@ -1,7 +1,7 @@
 import express from "express";
 
 import { getAllNotes } from "../controllers/notesController.js"
-import {postAllNotes} from "../controllers/notesController.js";
+import {createAllNotes} from "../controllers/notesController.js";
 import { updateAllNotes } from "../controllers/notesController.js";
 import {deleteAllNotes} from "../controllers/notesController.js";
 
@@ -31,8 +31,8 @@ const router = express.Router();
 
 
 router.get("/",getAllNotes);
-router.post("/:id",postAllNotes);
-router.put("/",updateAllNotes);
+router.post("/",createAllNotes);
+router.put("/:id",updateAllNotes);
 router.delete("/:id/data", deleteAllNotes)
 export default router;   // this function exporting syntax in js 
 
