@@ -23,3 +23,7 @@ const notesSchema = mongoose.Schema({
 
 
 // above was our schema , now will create a Note model, based on the designed schema...
+
+const Note = mongoose.model("Note",notesSchema);
+
+export default Note ;
