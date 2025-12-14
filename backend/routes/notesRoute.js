@@ -4,6 +4,7 @@ import { getAllNotes } from "../controllers/notesController.js"
 import {createAllNotes} from "../controllers/notesController.js";
 import { updateAllNotes } from "../controllers/notesController.js";
 import {deleteAllNotes} from "../controllers/notesController.js";
+import { getNoteById } from "../controllers/notesController.js";
 
 
 const router = express.Router();
@@ -31,6 +32,7 @@ const router = express.Router();
 
 
 router.get("/",getAllNotes);
+router.get("/:id",getNoteById);
 router.post("/",createAllNotes);
 router.put("/:id",updateAllNotes);
 router.delete("/:id", deleteAllNotes)

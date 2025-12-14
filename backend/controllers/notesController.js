@@ -61,6 +61,18 @@ res.status(200).json({message:"Note deleted successfully"});
 }
 
 
+export async function getNoteById(req,res){
+    try{
+        const getIt = await Note.findById(req.params.id) // in all get request no need to pass model
+        res.status(200).json(getIt)
+
+    } catch(error){
+        console.error("Internal Server Error", error);
+        res.status(500).json({message:"Cant get the notes by ID"})
+    }
+}
+
+
 
 
 
