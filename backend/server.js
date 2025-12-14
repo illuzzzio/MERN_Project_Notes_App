@@ -1,7 +1,12 @@
 import express from "express";
-import notesRoute from "./routes/notesRoute.js"   // we can import files as well as fucntions in js 
-
+import dotenv from "dotenv";
+import notesRoute from "./routes/notesRoute.js"
+import {connectDB} from "./config/db.js";
+ // we can import files as well as fucntions in js 
+dotenv.config();
 const app = express();
+
+connectDB();
 
 app.use("/api/notes",notesRoute); // how setting till /api/notes , and calling further routes from a differen file , this makes code super readable 
 
@@ -32,6 +37,8 @@ app.use("/api/notes",notesRoute); // how setting till /api/notes , and calling f
 app.listen(5001,()=>{
     console.log("server started successfully");
 });
+// console.log("ENV CHECK:", process.env.MONGO_URI);   // was just cehcking if the env is right or wrong 
+
 
 
 // here we can see every router has common part /api/notes , we can use best express routing practices i.e creating seperate router for managing files more precisely
