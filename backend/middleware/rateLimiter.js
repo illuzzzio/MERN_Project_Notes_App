@@ -13,3 +13,7 @@ try{
 };
 
 export default rateLimiter;
+
+//- next is the Express middleware continuation function.
+// - When you call next(), Express moves on to the next middleware or route handler in the chain.
+// - If you don’t call next() or return a response, the request will hang.
