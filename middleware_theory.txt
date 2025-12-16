@@ -1,0 +1,16 @@
+a function that has access to the application's 
+request-response cycle and can execute code, modify request and response objects, 
+end the cycle, or pass control to the next function in the stack. Middleware functions act as a 
+processing pipeline for incoming HTTP requests. 
+
+when client sends request tot the server , before sending the response, back to the client , middleware plays it's role 
+
+Use-cases of MiddleWare:
+1. Auth Check 
+2. rate limiting 
+
+Rate limiting : this is way to control , how often someone can do something on a website , or app like how many times they can refresh a page , make a request to api , or try to log in.
+
+Only 100 requests per user every 15 minutes 
+
+code 429 , too many request , prevents server overload ..

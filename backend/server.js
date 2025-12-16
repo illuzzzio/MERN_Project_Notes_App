@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import notesRoute from "./routes/notesRoute.js"
 import {connectDB} from "./config/db.js";
+import rateLimiter from "./middleware/rateLimiter.js"
  // we can import files as well as fucntions in js 
 dotenv.config();
 const app = express();
@@ -9,7 +10,15 @@ const app = express();
 connectDB();
 
 //middleware //
-app.use(express.json());
+
+app.use(express.json()); // this middleware will parse the json bodies
+// our simple custom middleware 
+// app.use((req,res,next)=>{
+//     console.log(`The method we are using is ${req.method} and the request url is ${req.url}`);
+//     next();
+// })
+
+app.use(rateLimiter) // this will check for ratelimiting , taht we basically cefined using upstash in upstash.js file .
 
 app.use("/api/notes",notesRoute); // how setting till /api/notes , and calling further routes from a differen file , this makes code super readable 
 
